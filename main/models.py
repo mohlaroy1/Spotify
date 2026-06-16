@@ -9,10 +9,9 @@ class Singer(models.Model):
     def __str__(self):
         return self.name
 
-
 class Album(models.Model):
     name = models.CharField(max_length=100)
-    cover = models.ImageField(upload_to='albums/%Y/%m')
+    cover = models.ImageField(upload_to='albums/%Y/%m', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
 
@@ -21,11 +20,22 @@ class Album(models.Model):
 
 
 class Song(models.Model):
+
+    genre_choices = (
+        ('pop', 'pop'),
+        ('rock', 'rock'),
+        ('classic', 'classic'),
+    )
+
     name = models.CharField(max_length=100)
-    genre = models.CharField(max_length=100)
+    genre = models.CharField(choices=genre_choices,max_length=100)
     duration = models.DurationField()
-    file = models.FileField(upload_to='songs/%Y/%m')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='songs/%Y/%m', blank=True, null=True)
+    singer = models.ForeignKey(Singer, on_delete=models.CASCADE, blank=True, null=True)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.singer}"
+
+
+
