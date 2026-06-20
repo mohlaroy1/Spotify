@@ -1,23 +1,24 @@
 from django.db import models
 
 
-class Singer(models.Model):
-    name = models.CharField(max_length=100)
-    birthdate = models.DateField( blank=True, null=True)
-    country = models.CharField(max_length=100, blank=True, null=True)
 
-    def __str__(self):
-        return self.name
 
 class Album(models.Model):
     name = models.CharField(max_length=100)
     cover = models.ImageField(upload_to='albums/%Y/%m', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
+class Singer(models.Model):
+    name = models.CharField(max_length=100)
+    birthdate = models.DateField( blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True)
+    albums = models.ManyToManyField(Album, blank=True)
+
+    def __str__(self):
+        return self.name
 
 class Song(models.Model):
 
@@ -36,6 +37,5 @@ class Song(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.singer}"
-
 
 
