@@ -1,8 +1,6 @@
 from django.db import models
 
 
-
-
 class Album(models.Model):
     name = models.CharField(max_length=100)
     cover = models.ImageField(upload_to='albums/%Y/%m', blank=True, null=True)
