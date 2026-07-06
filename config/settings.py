@@ -1,5 +1,5 @@
-
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -102,9 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = [
-    ('en', 'English'),
-    ('ru', 'Russian'),
-    ('uz', 'Uzbek'),
+    ('en', _('English')),
+    ('ru', _('Russian')),
+    ('uz', _('Uzbek')),
 ]
 
 TIME_ZONE = 'Asia/Tashkent'
@@ -112,6 +113,10 @@ TIME_ZONE = 'Asia/Tashkent'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+JAZZMIN_SETTINGS = {
+    "language_chooser": True,
+}
 
 LOCALE_PATHS = (
     BASE_DIR / 'locale',
