@@ -1,0 +1,49 @@
+# === Python Compiled Files ===
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+
+# === Environments & Dependencies ===
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# === Databases ===
+*.sqlite3
+
+# === Media & Static Assets ===
+# Ignore user-uploaded media files
+media/
+# Ignore collected static files (uncomment if you run collectstatic locally)
+# staticfiles/
+
+# === Testing & Coverage ===
+htmlcov/
+.toast
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+nosetests.xml
+
+# === IDEs and Editors ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# === OS Files ===
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
